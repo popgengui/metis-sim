@@ -1,0 +1,54 @@
+{
+  "name": "bimbo_da_tosta",
+  "version": "0.0.1",
+  "description": "Population Genetics simulator in JavaScript",
+  "license": "Apache-2.0",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tiagoantao/bimbo_da_tosta.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tiagoantao/bimbo_da_tosta/issues",
+    "email": "tiagoantao@gmail.com"
+  },
+  "homepage": "https://github.com/tiagoantao/bimbo_da_tosta",
+  "scripts": {
+    "lint": "gulp lint",
+    "build": "gulp build",
+    "test": "gulp test",
+    "preversion": "",
+    "version": "",
+    "postversion": "git push && git push --tags",
+    "prepublish": "gulp default",
+    "coveralls": "gulp test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  },
+  "keywords": [
+    "population genetics",
+    "simulation"
+  ],
+  "author": {
+    "name": "Tiago Antao",
+    "email": "tiagoantao@gmail.com",
+    "url": "http://tiago.org"
+  },
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-documentation": "^3.1.0",
+    "gulp-eslint": "^3.0.1",
+    "gulp-istanbul": "^1.1.1",
+    "gulp-mocha": "^3.0.1",
+    "isparta": "^4.0.0"
+  }
+}
