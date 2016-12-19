@@ -4,7 +4,7 @@
 let gulp = require('gulp'),
     babel = require('gulp-babel'),
     eslint = require('gulp-eslint'),
-    jsdoc = require('gulp-documentation'),
+    gulpdoc = require('gulp-documentation'),
     istanbul = require('gulp-istanbul'),
     mocha = require('gulp-mocha')
 
@@ -28,13 +28,11 @@ gulp.task('lint', () => {
 })
 
 
-/*
 gulp.task('doc', () => {
-    let config = require('./jsdoc.json')
-    return gulp.src(lib_code, {read: false})
-               .pipe(jsdoc(config))
+    return gulp.src('./index.js')
+        .pipe(gulpdoc('html'))
+        .pipe(gulp.dest('docs/gen'))
 })
-*/
 
 gulp.task('pretest', () => {
     require('babel-core/register')
