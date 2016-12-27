@@ -2,8 +2,8 @@
 'use strict';
 
 let gulp = require('gulp'),
-    babel = require('rollup-plugin-babel'),
-    //babel = require('gulp-babel'), //remove
+    rollup_babel = require('rollup-plugin-babel'),
+    babel = require('gulp-babel'),
     rollup = require('rollup-stream'),
     eslint = require('gulp-eslint'),
     gulpdoc = require('gulp-documentation'),
@@ -15,11 +15,22 @@ const lib_code = ['./lib/**/*.js']
 const lint_files = ['*.js', './tests/**/*.js'].concat(lib_code)
 const test_files = ['./tests/**/*.js']
 
+
 gulp.task('build', () => {
     return rollup({
             entry: './lib/main.js',
             plugins: [
-                babel({
+                rollup_babel({
+                    "presets": [
+                        [
+                            "es2015", {
+                                "modules": false
+                            }
+                        ]
+                    ],
+                    "plugins": [
+                        "external-helpers"
+                    ],
                     include: lib_code
                 })
             ]
@@ -28,13 +39,6 @@ gulp.task('build', () => {
         .pipe(gulp.dest('./dist'))
 })
 
-/*
-gulp.task('build', () => {
-    return gulp.src(lib_code)
-        .pipe(babel())
-        .pipe(gulp.dest('dist'))
-})
-*/
 
 gulp.task('lint', () => {
     return gulp.src(lint_files)
@@ -55,20 +59,39 @@ gulp.task('doc', () => {
         .pipe(gulp.dest('docs/gen'))
 })
 
+
 gulp.task('pretest', () => {
-    require('babel-core/register')
     return gulp.src(lib_code)
-               .pipe(istanbul({instrumenter: require('isparta').Instrumenter}))
-               .pipe(istanbul.hookRequire())
+        .pipe(babel({
+            presets: [
+                ['es2015', {
+                    modules: "commonjs"
+                }]
+            ]
+        }))
+        .pipe(istanbul({
+            instrumenter: require('isparta').Instrumenter
+        }))
+        .pipe(istanbul.hookRequire())
 })
 
-gulp.task('test', ['pretest'], () => {
-    require('babel-core/register')
-    //require('babel-polyfill')
 
-    return gulp.src(test_files, {read: false})
-               .pipe(mocha())
-               .pipe(istanbul.writeReports())
+gulp.task('test', ['pretest'], () => {
+    require('babel-register')
+        //require('babel-polyfill')
+
+    return gulp.src(test_files, {
+            read: false
+        })
+        .pipe(babel({
+            presets: [
+                ['es2015', {
+                    modules: false
+                }]
+            ]
+        }))
+        .pipe(mocha())
+        .pipe(istanbul.writeReports())
 })
 
 
