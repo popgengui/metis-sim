@@ -38,7 +38,12 @@ gulp.task('build', () => {
 
 gulp.task('lint', () => {
     return gulp.src(lint_files)
-        .pipe(eslint())
+        .pipe(eslint({
+            ecmaVersion: 6,
+            envs: ['es6'],
+            parserOptions: {sourceType: 'module'},
+            useEslintrc: false
+        }))
         .pipe(eslint.format())
         .pipe(eslint.failOnError())
 })
