@@ -17,6 +17,7 @@
     "lint": "gulp lint",
     "build": "gulp build",
     "test": "gulp test",
+    "rollup": "gulp rollup",
     "preversion": "",
     "version": "",
     "postversion": "git push && git push --tags",
@@ -43,6 +44,8 @@
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
+    "babel-plugin-external-helpers": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-documentation": "^3.1.0",
@@ -50,6 +53,9 @@
     "gulp-istanbul": "^1.1.1",
     "gulp-mocha": "^3.0.1",
     "isparta": "^4.0.0",
-    "run-sequence": "^1.2.2"
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-stream": "^1.16.0",
+    "run-sequence": "^1.2.2",
+    "vinyl-source-stream": "^1.1.0"
   }
 }
