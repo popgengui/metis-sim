@@ -21,16 +21,7 @@ gulp.task('build', () => {
             entry: './lib/main.js',
             plugins: [
                 rollup_babel({
-                    "presets": [
-                        [
-                            "es2015", {
-                                "modules": false
-                            }
-                        ]
-                    ],
-                    "plugins": [
-                        "external-helpers"
-                    ],
+                    "presets": [ "es2015-rollup" ],
                     include: lib_code
                 })
             ]
