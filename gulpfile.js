@@ -61,12 +61,7 @@ gulp.task('doc', () => {
 
 
 gulp.task('pretest', () => {
-    return gulp.src(lib_code)
-        .pipe(babel({
-            presets: [
-                ['es2015']
-            ]
-        }))
+    return gulp.src('build/' + lib_code)
         .pipe(istanbul({
             instrumenter: require('isparta').Instrumenter
         }))
