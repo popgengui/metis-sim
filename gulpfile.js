@@ -74,7 +74,7 @@ gulp.task('pretest', () => {
 })
 
 
-gulp.task('test', ['pretest'], () => {
+gulp.task('test', ['build', 'pretest'], () => {
     return gulp.src(test_files, {
             read: true
         })
