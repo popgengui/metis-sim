@@ -54,7 +54,7 @@ gulp.task('lint', () => {
 
 
 gulp.task('doc', () => {
-    return gulp.src('./index.js')
+    return gulp.src(lib_code)
         .pipe(gulpdoc('html'))
         .pipe(gulp.dest('docs/gen'))
 })
