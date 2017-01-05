@@ -16,7 +16,7 @@ const lint_files = ['*.js', './tests/**/*.js'].concat(lib_code)
 const test_files = ['./tests/**/*.js']
 
 
-gulp.task('build', () => {
+gulp.task('rollup', () => {
     return rollup({
             entry: './lib/main.js',
             plugins: [
@@ -30,6 +30,15 @@ gulp.task('build', () => {
         .pipe(gulp.dest('./dist'))
 })
 
+gulp.task('build', ['rollup'], () => {
+    return gulp.src(lib_code, {
+            read: true
+        })
+        .pipe(babel({
+            presets: ['es2015']
+        }))
+        .pipe(gulp.dest('build/lib'))
+})
 
 gulp.task('lint', () => {
     return gulp.src(lint_files)
@@ -55,9 +64,7 @@ gulp.task('pretest', () => {
     return gulp.src(lib_code)
         .pipe(babel({
             presets: [
-                ['es2015', {
-                    modules: "commonjs"
-                }]
+                ['es2015']
             ]
         }))
         .pipe(istanbul({
@@ -68,19 +75,15 @@ gulp.task('pretest', () => {
 
 
 gulp.task('test', ['pretest'], () => {
-    require('babel-register')
-        //require('babel-polyfill')
-
     return gulp.src(test_files, {
-            read: false
+            read: true
         })
         .pipe(babel({
             presets: [
-                ['es2015', {
-                    modules: false
-                }]
+                'es2015'
             ]
         }))
+        .pipe(gulp.dest('build/tests'))
         .pipe(mocha())
         .pipe(istanbul.writeReports())
 })
