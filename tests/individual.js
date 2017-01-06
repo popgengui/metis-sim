@@ -1,11 +1,11 @@
 import chai from 'chai'
 var assert = chai.assert
 
-import {Individual} from '../lib/individual.js'
+import * as individual from '../lib/individual.js'
 
 describe('Individual object', () => {
     it('Basic creation', () => {
-        let ind = new Individual()
+        let ind = new individual.Individual()
         assert.equal(ind.id, 0)
     })
 })
