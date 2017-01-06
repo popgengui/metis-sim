@@ -1,5 +1,7 @@
+import chai from 'chai'
+var assert = chai.assert
+
 import {Individual} from '../lib/individual.js'
-var assert = require('assert')
 
 describe('Individual object', () => {
     it('Basic creation', () => {
