@@ -1,4 +1,5 @@
-/*eslint-env node*/
+/* eslint-disable global-require */
+/* eslint-env node */
 'use strict';
 
 let gulp = require('gulp'),
