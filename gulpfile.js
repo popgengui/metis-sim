@@ -16,6 +16,7 @@ const lib_code = ['./lib/**/*.js']
 const lint_files = ['*.js', './tests/**/*.js'].concat(lib_code)
 const test_files = ['./tests/**/*.js']
 
+const pkg = require('./package.json')
 
 gulp.task('rollup', () => {
     return rollup({
@@ -56,8 +57,11 @@ gulp.task('lint', () => {
 
 gulp.task('doc', () => {
     return gulp.src(lib_code)
-        .pipe(gulpdoc('html'))
-        .pipe(gulp.dest('docs/gen'))
+        .pipe(gulpdoc('html', {}, {
+            name: 'Metis',
+            version: pkg.version
+        }))
+        .pipe(gulp.dest('docs/api'))
 })
 
 
