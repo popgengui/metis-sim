@@ -1,18 +1,18 @@
 {
-  "name": "bimbo_da_tosta",
+  "name": "metis",
   "version": "0.0.1",
   "description": "Population Genetics simulator in JavaScript",
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tiagoantao/bimbo_da_tosta.git"
+    "url": "git+https://github.com/tiagoantao/metis.git"
   },
   "bugs": {
-    "url": "https://github.com/tiagoantao/bimbo_da_tosta/issues",
+    "url": "https://github.com/tiagoantao/metis/issues",
     "email": "tiagoantao@gmail.com"
   },
-  "homepage": "https://github.com/tiagoantao/bimbo_da_tosta",
+  "homepage": "https://github.com/tiagoantao/metis",
   "scripts": {
     "lint": "gulp lint",
     "build": "gulp build",
