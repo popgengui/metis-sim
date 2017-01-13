@@ -85,6 +85,7 @@ gulp.task('pretest', () => {
 
 
 gulp.task('test', ['build', 'pretest'], () => {
+    require('babel-polyfill')
     return gulp.src(test_files, {
             read: true
         })
