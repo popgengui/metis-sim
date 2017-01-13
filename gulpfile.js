@@ -27,7 +27,7 @@ gulp.task('examples', () => {
         .pipe(gulp.dest('./build'))
 })
 
-gulp.task('build', ['examples'], () => {
+gulp.task('rollup', () => {
     return rollup({
             entry: lib_code,
             plugins: [
@@ -39,8 +39,10 @@ gulp.task('build', ['examples'], () => {
             ]
         })
         .pipe(source('metis.js'))
-        .pipe(gulp.dest('./dist'))
-    /*
+        .pipe(gulp.dest('./build'))
+})
+
+gulp.task('build', ['rollup', 'examples'], () => {
     return gulp.src(lib_code, {
             read: true
         })
@@ -48,7 +50,6 @@ gulp.task('build', ['examples'], () => {
             presets: ['es2015']
         }))
         .pipe(gulp.dest('build/lib'))
-        */
 })
 
 gulp.task('lint', () => {

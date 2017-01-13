@@ -1,7 +1,7 @@
 import chai from 'chai'
 var assert = chai.assert
 
-import * as individual from '../lib/individual.js'
+import * as individual from '../lib/metis/individual.js'
 
 describe('Individual object', () => {
     it('Basic creation', () => {

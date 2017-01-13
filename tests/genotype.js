@@ -1,4 +1,4 @@
 import chai from 'chai'
 var assert = chai.assert
 
-import * as genotype from '../lib/genotype.js'
+import * as genotype from '../lib/metis/genotype.js'

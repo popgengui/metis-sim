@@ -1,4 +1,4 @@
 import chai from 'chai'
 var assert = chai.assert
 
-import * as operator from '../lib/operator.js'
+import * as operator from '../lib/metis/operator.js'
