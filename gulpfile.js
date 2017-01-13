@@ -4,6 +4,7 @@
 
 let gulp = require('gulp'),
     rollup_babel = require('rollup-plugin-babel'),
+    rollup_multi = require('rollup-plugin-multi-entry'),
     babel = require('gulp-babel'),
     rollup = require('rollup-stream'),
     eslint = require('gulp-eslint'),
@@ -18,21 +19,28 @@ const test_files = ['./tests/**/*.js']
 
 const pkg = require('./package.json')
 
-gulp.task('rollup', () => {
+gulp.task('examples', () => {
     return rollup({
-            entry: './lib/main.js',
+            entry: 'examples/cli/simple.js',
+        })
+        .pipe(source('simple.js'))
+        .pipe(gulp.dest('./build'))
+})
+
+gulp.task('build', ['examples'], () => {
+    return rollup({
+            entry: lib_code,
             plugins: [
+                rollup_multi(),
                 rollup_babel({
-                    "presets": [ "es2015-rollup" ],
+                    //presets: [ "es2015-rollup" ],
                     include: lib_code
                 })
             ]
         })
-        .pipe(source('app.js'))
+        .pipe(source('metis.js'))
         .pipe(gulp.dest('./dist'))
-})
-
-gulp.task('build', ['rollup'], () => {
+    /*
     return gulp.src(lib_code, {
             read: true
         })
@@ -40,6 +48,7 @@ gulp.task('build', ['rollup'], () => {
             presets: ['es2015']
         }))
         .pipe(gulp.dest('build/lib'))
+        */
 })
 
 gulp.task('lint', () => {
