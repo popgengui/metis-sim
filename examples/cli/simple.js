@@ -15,8 +15,6 @@ console.log(individuals)
 
 let operators = [new SexualReproduction(species, size)]
 
-let state = {individuals, operators}
-
-state = cycle(state.individuals, state.operators)
+let state = cycle(individuals, operators)
 
 console.log(state.individuals)
