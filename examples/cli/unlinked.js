@@ -2,12 +2,14 @@
 import {Species} from '../../lib/metis/species'
 import {assign_random_sex, generate_basic_individual} from '../../lib/metis/individual'
 import {generate_n_inds} from '../../lib/metis/population'
+import * as genotype from '../../lib/metis/genotype'
 
 import {SexualReproduction} from '../../lib/metis/operators/reproduction'
 
 import {cycle} from '../../lib/metis/simulator'
 
 const size = 20
+let unlinked_genome = genotype.generate_unlinked_genome(size)
 const species = new Species('unlinked', genome)
 
 let individuals = generate_n_inds(size, () =>

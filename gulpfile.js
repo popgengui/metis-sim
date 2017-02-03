@@ -11,6 +11,7 @@ let gulp = require('gulp'),
     gulpdoc = require('gulp-documentation'),
     istanbul = require('gulp-istanbul'),
     source = require('vinyl-source-stream'),
+    flatmap = require('gulp-flatmap'),
     mocha = require('gulp-mocha')
 
 const lib_code = ['./lib/**/*.js']
@@ -20,11 +21,19 @@ const test_files = ['./tests/**/*.js']
 const pkg = require('./package.json')
 
 gulp.task('examples', () => {
-    return rollup({
+    return gulp.src('examples/cli/*.js')
+        .pipe(flatmap( (stream, file) => {
+            return rollup({entry: file.path})
+                .pipe(source(file.relative))
+                .pipe(gulp.dest('./build'))
+        }))
+    /*
+     rollup({
             entry: 'examples/cli/simple.js',
         })
         .pipe(source('simple.js'))
         .pipe(gulp.dest('./build'))
+        */
 })
 
 gulp.task('rollup', () => {
