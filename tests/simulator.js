@@ -3,7 +3,7 @@ var assert = chai.assert
 
 import * as simulator from '../lib/metis/simulator.js'
 import * as reproduction from '../lib/metis/operators/reproduction.js'
-import * as utils from './utils.js'
+import * as utils from './test_utils.js'
 
 describe('Basic simulation', () => {
     it('No Ops simulation', () => {

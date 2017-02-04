@@ -3,7 +3,7 @@ var assert = chai.assert
 
 import * as population from '../lib/metis/population.js'
 import * as individual from '../lib/metis/individual.js'
-import * as utils from './utils.js'
+import * as utils from './test_utils.js'
 
 describe('Population generation', () => {
     it('single individual', () => {

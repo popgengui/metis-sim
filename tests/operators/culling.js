@@ -3,7 +3,7 @@ var assert = chai.assert
 
 import * as culling from '../../lib/metis/operators/culling.js'
 import {generate_basic_individual} from '../../lib/metis/individual.js'
-import * as utils from '../utils.js'
+import * as utils from '../test_utils.js'
 
 describe('Culling', () => {
     let kill_older = new culling.KillOlderGenerations()

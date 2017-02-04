@@ -2,7 +2,7 @@ import chai from 'chai'
 var assert = chai.assert
 
 import * as individual from '../lib/metis/individual.js'
-import * as utils from './utils.js'
+import * as utils from './test_utils.js'
 
 describe('Individual object', () => {
     it('Basic creation', () => {
