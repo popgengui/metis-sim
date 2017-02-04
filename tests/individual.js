@@ -2,6 +2,7 @@ import chai from 'chai'
 var assert = chai.assert
 
 import * as individual from '../lib/metis/individual.js'
+import {generate_basic_individual} from '../lib/metis/integrated.js'
 import * as utils from './test_utils.js'
 
 describe('Individual object', () => {
@@ -10,13 +11,8 @@ describe('Individual object', () => {
         assert.isDefined(ind.id)
         assert.equal(ind.alive, true)
     })
-    it('generate_basic_individual', () => {
-        let ind = new individual.generate_basic_individual(utils.empty_species, 5)
-        assert.equal(ind.cycle_born, 5)
-        assert.isDefined(ind.id)
-    })
     it('assign_random_sex', () => {
-        let ind = new individual.generate_basic_individual()
+        let ind = new generate_basic_individual()
         individual.assign_random_sex(ind)
         assert.isDefined(ind.is_female)
     })

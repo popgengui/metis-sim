@@ -1,7 +1,8 @@
 //Unlinked makers
 import {Species} from '../../lib/metis/species'
-import {assign_random_sex, generate_basic_individual} from '../../lib/metis/individual'
+import {assign_random_sex} from '../../lib/metis/individual'
 import {generate_n_inds} from '../../lib/metis/population'
+import {generate_basic_individual, create_randomized_genome} from '../../lib/metis/integrated'
 import * as genotype from '../../lib/metis/genotype'
 
 import {SexualReproduction} from '../../lib/metis/operators/reproduction'

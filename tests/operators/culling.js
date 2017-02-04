@@ -2,7 +2,7 @@ import chai from 'chai'
 var assert = chai.assert
 
 import * as culling from '../../lib/metis/operators/culling.js'
-import {generate_basic_individual} from '../../lib/metis/individual.js'
+import {generate_basic_individual} from '../../lib/metis/integrated.js'
 import * as utils from '../test_utils.js'
 
 describe('Culling', () => {
