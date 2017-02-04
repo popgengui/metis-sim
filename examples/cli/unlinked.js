@@ -14,8 +14,9 @@ let unlinked_genome = genotype.generate_unlinked_genome(size,
     () => {return new genotype.SNP()})
 const species = new Species('unlinked', unlinked_genome)
 
+console.log(unlinked_genome)
 let individuals = generate_n_inds(size, () =>
-    assign_random_sex(generate_basic_individual(species)))
+    assign_random_sex(generate_basic_individual(species, 0, create_randomized_genome)))
 console.log(individuals)
 
 let operators = [new SexualReproduction(species, size)]
