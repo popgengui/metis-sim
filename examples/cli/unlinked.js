@@ -5,7 +5,7 @@ import {generate_n_inds} from '../../lib/metis/population'
 import {generate_basic_individual, create_randomized_genome} from '../../lib/metis/integrated'
 import * as genotype from '../../lib/metis/genotype'
 
-import {SexualReproduction} from '../../lib/metis/operators/reproduction'
+import * as reproduction from '../../lib/metis/operators/reproduction'
 
 import {cycle} from '../../lib/metis/simulator'
 
@@ -17,9 +17,9 @@ const species = new Species('unlinked', unlinked_genome)
 
 let individuals = generate_n_inds(size, () =>
     assign_random_sex(generate_basic_individual(species, 0, create_randomized_genome)))
-console.log(individuals)
+    log(individuals)
 
-let operators = [new SexualReproduction(species, size)]
+let operators = [new reproduction.SexualReproduction(species, size)]
 
 let state = cycle(individuals, operators)
 
