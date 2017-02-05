@@ -48,6 +48,14 @@ describe('Individual Choosers', () => {
 
 
 describe('Mating', () => {
+    it('RandomMater', () => {
+        //Insufficient
+        let random_mater = new reproduction.RandomMater(null, [female1, male1])
+        let mate_generator = random_mater.mate()
+        let mates = mate_generator.next()
+        assert.equal(mates.value.mother.is_female, true)
+        assert.equal(mates.value.father.is_female, false)
+    })
 })
 
 
