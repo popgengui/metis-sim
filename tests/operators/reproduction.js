@@ -14,10 +14,11 @@ male1.is_female = false
 let female1 = generate_basic_individual(test_utils.empty_species, 0)
 female1.is_female = true
 
+let wrapper = new reproduction.WrapperChooser([male1, female1])
+
 
 describe('Individual Choosers', () => {
     it('Wrapper', () => {
-        let wrapper = new reproduction.WrapperChooser([male1, female1])
         let choices = wrapper.choose()
         let choice = choices.next()
         assert.equal(choice.value.is_female, false)
@@ -25,6 +26,23 @@ describe('Individual Choosers', () => {
         assert.equal(choice.value.is_female, true)
         choice = choices.next()
         assert.equal(choice.done, true)
+    })
+    it('SexChooser', () => {
+        let sex_chooser = new reproduction.SexChooser(wrapper, true)
+        let choices = sex_chooser.choose()
+        let choice = choices.next()
+        assert.equal(choice.value.is_female, true)
+        choice = choices.next()
+        assert.equal(choice.done, true)
+    })
+    it('RandomChooser', () => {
+        //Not perfect
+        let random_chooser = new reproduction.RandomChooser(wrapper)
+        let choices = random_chooser.choose()
+        choices.next()
+        choices.next()
+        let choice = choices.next()
+        assert.equal(choice.done, false)  // infinite
     })
 })
 
