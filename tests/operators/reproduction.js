@@ -60,6 +60,15 @@ describe('Mating', () => {
 
 
 describe('Individual Generators', () => {
+    it('Standard Sexual Generator - no genome', () => {
+        let mock_reproductor = {
+            species: test_utils.empty_species,
+            cycle: 0
+        }
+        let generator = new reproduction.StandardSexualGenerator(mock_reproductor)
+    })  
+    it('Standard Sexual Generator - with genome', () => {
+    })
 })
 
 
@@ -82,5 +91,16 @@ describe('Complete Reproduction', () => {
         assert.equal(new_individuals.length, 30)
         assert.equal(new_individuals[new_individuals.length - 1].cycle_born, 2)
         //TBD XXX: Some more testing...
+    })
+    it('Sexual Reproduction - with genome', () => {
+    })
+})
+
+describe('Annotators', () => {
+    it('Parents', () => {
+        let individual = {}
+        reproduction.annotate_with_parents(individual, [female1, male1])
+        assert.equal(individual.mother, female1.id)
+        assert.equal(individual.father, male1.id)
     })
 })
