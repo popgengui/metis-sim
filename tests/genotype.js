@@ -7,12 +7,6 @@ describe('Markers without linkage information', () => {
     it('Marker', () => {
         assert.throws(() => {new genotype.Marker()}, 'Cannot')
     })
-    it('SimpleMarker', () => {
-        let marker = new genotype.SimpleMarker()
-        assert.equal(marker.size, 1)
-        let marker2 = new genotype.SimpleMarker([0, 1])
-        assert.equal(marker2.possible_values.length, 2)
-    })
     it('SNP', () => {
         let snp = new genotype.SNP()
         assert.equal(snp.possible_values.length, 2)
