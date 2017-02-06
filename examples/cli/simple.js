@@ -1,6 +1,5 @@
 import {Species} from '../../lib/metis/species'
-import {assign_random_sex} from '../../lib/metis/individual'
-import {generate_basic_individual} from '../../lib/metis/integrated'
+import {assign_random_sex, generate_basic_individual} from '../../lib/metis/individual'
 import {generate_n_inds} from '../../lib/metis/population'
 
 import {SexualReproduction} from '../../lib/metis/operators/reproduction'

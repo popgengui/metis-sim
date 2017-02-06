@@ -2,9 +2,9 @@ import chai from 'chai'
 var assert = chai.assert
 
 import * as reproduction from '../../lib/metis/operators/reproduction'
-import {assign_random_sex} from '../../lib/metis/individual'
+import {assign_random_sex, generate_basic_individual} from '../../lib/metis/individual'
 import {generate_n_inds} from '../../lib/metis/population'
-import {generate_basic_individual} from '../../lib/metis/integrated'
+import {generate_individual_with_genome} from '../../lib/metis/integrated'
 
 import * as test_utils from '../test_utils'
 
@@ -60,14 +60,27 @@ describe('Mating', () => {
 
 
 describe('Individual Generators', () => {
-    it('Standard Sexual Generator - no genome', () => {
+    it('Sexual Generator - no genome', () => {
         let mock_reproductor = {
             species: test_utils.empty_species,
-            cycle: 0
+            cycle: 5
         }
-        let generator = new reproduction.StandardSexualGenerator(mock_reproductor)
+        let generator = new reproduction.NoGenomeSexualGenerator(mock_reproductor, [])
+        generator.mother = female1
+        generator.father = male1
+        let individual = generator.generate()
+        assert.equal(individual.cycle_born, 5)
     })  
     it('Standard Sexual Generator - with genome', () => {
+        let mock_reproductor = {
+            species: test_utils.two_SNP_species,
+            cycle: 5
+        }
+        let generator = new reproduction.SexualGenerator(mock_reproductor)
+        generator.mother = female1
+        generator.father = male1
+        let individual = generator.generate()
+        assert.equal(individual.cycle_born, 5)
     })
 })
 
@@ -95,6 +108,7 @@ describe('Complete Reproduction', () => {
     it('Sexual Reproduction - with genome', () => {
     })
 })
+
 
 describe('Annotators', () => {
     it('Parents', () => {

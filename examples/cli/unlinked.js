@@ -2,7 +2,7 @@
 import {Species} from '../../lib/metis/species'
 import {assign_random_sex} from '../../lib/metis/individual'
 import {generate_n_inds} from '../../lib/metis/population'
-import {generate_basic_individual, create_randomized_genome} from '../../lib/metis/integrated'
+import {generate_individual_with_genome, create_randomized_genome} from '../../lib/metis/integrated'
 import * as genotype from '../../lib/metis/genotype'
 
 import * as reproduction from '../../lib/metis/operators/reproduction'
@@ -16,7 +16,7 @@ let unlinked_genome = genotype.generate_unlinked_genome(genome_size,
 const species = new Species('unlinked', unlinked_genome)
 
 let individuals = generate_n_inds(size, () =>
-    assign_random_sex(generate_basic_individual(species, 0, create_randomized_genome)))
+    assign_random_sex(generate_individual_with_genome(species, 0, create_randomized_genome)))
 
 let operators = [new reproduction.SexualReproduction(species, size)]
 

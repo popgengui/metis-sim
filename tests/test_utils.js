@@ -5,20 +5,24 @@ import * as integrated from '../lib/metis/integrated.js'
 import * as population from '../lib/metis/population.js'
 
 //Markers
-export let SNP = new genotype.SNP()
+export let snp1 = new genotype.SNP()
+export let snp2 = new genotype.SNP()
 export let autosome_SNP = new genotype.Autosome(genotype.SNP)
 
+//Genome metadata
+export let metadata_genome_SNP = new Map()
+metadata_genome_SNP.set('SNP', autosome_SNP)
+
 //Genomes
-export let genome_SNP = new Map()
-genome_SNP.set('SNP', autosome_SNP)
+let two_SNP_genome = new genotype.ChromosomePair([snp1, snp2])
 
 //Species
 export let empty_species = new species.Species('empty', undefined)
-export let single_SNP_species = new species.Species('Single SNP', genome_SNP)
+export let two_SNP_species = new species.Species('2 SNPs', two_SNP_genome)
 
 
 //Population support
 export let generate_n_basic_individuals = (n, cycle=0) => {
     return population.generate_n_inds(n,
-        () => integrated.generate_basic_individual(empty_species, cycle))
+        () => individual.generate_basic_individual(empty_species, cycle))
 }
