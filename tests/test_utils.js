@@ -13,8 +13,12 @@ export let autosome_SNP = new genotype.Autosome(genotype.SNP)
 export let metadata_genome_SNP = new Map()
 metadata_genome_SNP.set('SNP', autosome_SNP)
 
+
+
 //Genomes
-let two_SNP_genome = new genotype.ChromosomePair([snp1, snp2])
+let two_SNP_chro_pair = new genotype.ChromosomePair([snp1, snp2])
+let metadata_genome_two_SNP = {SNP2: two_SNP_chro_pair}
+let two_SNP_genome = new genotype.Genome(metadata_genome_two_SNP)
 
 //Species
 export let empty_species = new species.Species('empty', undefined)

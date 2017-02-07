@@ -72,6 +72,7 @@ describe('Individual Generators', () => {
         assert.equal(individual.cycle_born, 5)
     })  
     it('Standard Sexual Generator - with genome', () => {
+        //XXX TBD Very incomplete
         let mock_reproductor = {
             species: test_utils.two_SNP_species,
             cycle: 5
@@ -92,7 +93,7 @@ describe('Complete Reproduction', () => {
         assert.equal(rep.size, 10)
     })
     it('Sexual Reproduction - no genome', () => {
-        let rep = new reproduction.SexualReproduction(test_utils.empty_species, 10)
+        let rep = new reproduction.NoGenomeSexualReproduction(test_utils.empty_species, 10)
         assert.equal(rep.species, test_utils.empty_species)
         assert.equal(rep.size, 10)
         let orig_size = 20

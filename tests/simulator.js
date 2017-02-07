@@ -15,7 +15,7 @@ describe('Basic simulation', () => {
         let size = 10
         let rep_size = 20
         const individuals = utils.generate_n_basic_individuals(size)
-        let operators = [new reproduction.SexualReproduction(
+        let operators = [new reproduction.NoGenomeSexualReproduction(
             utils.empty_species, rep_size)]
         const sim_res = new simulator.cycle(individuals, operators)
         assert.equal(sim_res.individuals.length, size + rep_size)
