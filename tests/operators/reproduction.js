@@ -4,7 +4,7 @@ var assert = chai.assert
 import * as reproduction from '../../lib/metis/operators/reproduction'
 import {assign_random_sex, generate_basic_individual} from '../../lib/metis/individual'
 import {generate_n_inds} from '../../lib/metis/population'
-import {generate_individual_with_genome} from '../../lib/metis/integrated'
+import * as integrated from '../../lib/metis/integrated'
 
 import * as test_utils from '../test_utils'
 
@@ -13,6 +13,12 @@ let male1 = generate_basic_individual(test_utils.empty_species, 0)
 male1.is_female = false
 let female1 = generate_basic_individual(test_utils.empty_species, 0)
 female1.is_female = true
+
+let gmale1 = integrated.generate_individual_with_genome(test_utils.two_SNP_species, 0, integrated.create_zero_genome)
+gmale1.is_female = false
+let gfemale1 = integrated.generate_individual_with_genome(test_utils.two_SNP_species, 0, integrated.create_zero_genome)
+gfemale1.is_female = true
+
 
 let wrapper = new reproduction.WrapperChooser([male1, female1])
 
@@ -78,8 +84,8 @@ describe('Individual Generators', () => {
             cycle: 5
         }
         let generator = new reproduction.SexualGenerator(mock_reproductor)
-        generator.mother = female1
-        generator.father = male1
+        generator.mother = gfemale1
+        generator.father = gmale1
         let individual = generator.generate()
         assert.equal(individual.cycle_born, 5)
     })
@@ -117,5 +123,8 @@ describe('Annotators', () => {
         reproduction.annotate_with_parents(individual, [female1, male1])
         assert.equal(individual.mother, female1.id)
         assert.equal(individual.father, male1.id)
+    })
+    it('transmit_sexual_genome', () => {
+        let individual = integrated.generate_individual_with_genome(test_utils.two_SNP_species, 0, integrated.create_zero_genome)
     })
 })
