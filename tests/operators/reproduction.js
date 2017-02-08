@@ -14,9 +14,9 @@ male1.is_female = false
 let female1 = generate_basic_individual(test_utils.empty_species, 0)
 female1.is_female = true
 
-let gmale1 = integrated.generate_individual_with_genome(test_utils.two_SNP_species, 0, integrated.create_zero_genome)
+let gmale1 = integrated.generate_individual_with_genome(test_utils.two_SNP_species, 0, integrated.create_test_genome)
 gmale1.is_female = false
-let gfemale1 = integrated.generate_individual_with_genome(test_utils.two_SNP_species, 0, integrated.create_zero_genome)
+let gfemale1 = integrated.generate_individual_with_genome(test_utils.two_SNP_species, 0, integrated.create_test_genome)
 gfemale1.is_female = true
 
 
@@ -125,6 +125,7 @@ describe('Annotators', () => {
         assert.equal(individual.father, male1.id)
     })
     it('transmit_sexual_genome', () => {
-        let individual = integrated.generate_individual_with_genome(test_utils.two_SNP_species, 0, integrated.create_zero_genome)
+        let individual = generate_basic_individual(test_utils.two_SNP_species, 0)
+        reproduction.transmit_sexual_genome(individual, [gfemale1, gmale1])
     })
 })
