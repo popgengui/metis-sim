@@ -5,6 +5,8 @@
 let gulp = require('gulp'),
     rollup_babel = require('rollup-plugin-babel'),
     rollup_multi = require('rollup-plugin-multi-entry'),
+    rollup_resolve = require('rollup-plugin-node-resolve'),
+    rollup_builtins = require('rollup-plugin-node-builtins'),
     babel = require('gulp-babel'),
     rollup = require('rollup-stream'),
     eslint = require('gulp-eslint'),
@@ -23,17 +25,13 @@ const pkg = require('./package.json')
 gulp.task('examples', () => {
     return gulp.src('examples/cli/*.js')
         .pipe(flatmap( (stream, file) => {
-            return rollup({entry: file.path})
-                .pipe(source(file.relative))
-                .pipe(gulp.dest('./build'))
+            return rollup({
+                entry: file.path,
+                plugins: [rollup_resolve(), rollup_builtins()]
+            })
+            .pipe(source(file.relative))
+            .pipe(gulp.dest('./build'))
         }))
-    /*
-     rollup({
-            entry: 'examples/cli/simple.js',
-        })
-        .pipe(source('simple.js'))
-        .pipe(gulp.dest('./build'))
-        */
 })
 
 gulp.task('rollup', () => {
@@ -44,7 +42,9 @@ gulp.task('rollup', () => {
                 rollup_babel({
                     //presets: [ "es2015-rollup" ],
                     include: lib_code
-                })
+                }),
+                rollup_resolve(),
+                rollup_builtins()
             ]
         })
         .pipe(source('metis.js'))
