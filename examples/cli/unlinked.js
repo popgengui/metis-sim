@@ -6,9 +6,12 @@ import {generate_individual_with_genome, create_randomized_genome} from '../../l
 import * as genotype from '../../lib/metis/genotype'
 
 import * as reproduction from '../../lib/metis/operators/reproduction'
-import {ExpHe} from '../../lib/metis/operators/stats/hz'
 
-import {cycle} from '../../lib/metis/simulator'
+import {KillOlderGenerations} from '../../lib/metis/operators/culling'
+import {ExpHe} from '../../lib/metis/operators/stats/hz'
+import {SexStatistics} from '../../lib/metis/operators/stats/demo'
+
+import {do_n_cycles} from '../../lib/metis/simulator'
 
 const genome_size = 5
 const size = 20
@@ -20,10 +23,13 @@ const species = new Species('unlinked', unlinked_genome)
 let individuals = generate_n_inds(size, () =>
     assign_random_sex(generate_individual_with_genome(species, 0, create_randomized_genome)))
 
-let operators = [new reproduction.SexualReproduction(species, size), new ExpHe()]
+let operators = [
+    new reproduction.SexualReproduction(species, size),
+    new KillOlderGenerations(),
+    new SexStatistics(),
+    new ExpHe()]
 
 //console.log(individuals)
 
-let state = cycle(individuals, operators)
-
+do_n_cycles(100, individuals, operators)
 //console.log(state.individuals)
