@@ -7,6 +7,7 @@ let gulp = require('gulp'),
     rollup_multi = require('rollup-plugin-multi-entry'),
     rollup_resolve = require('rollup-plugin-node-resolve'),
     rollup_builtins = require('rollup-plugin-node-builtins'),
+    rollup_common = require('rollup-plugin-commonjs'),
     babel = require('gulp-babel'),
     rollup = require('rollup-stream'),
     eslint = require('gulp-eslint'),
@@ -27,7 +28,7 @@ gulp.task('examples', () => {
         .pipe(flatmap( (stream, file) => {
             return rollup({
                 entry: file.path,
-                plugins: [rollup_resolve(), rollup_builtins()]
+                plugins: [rollup_resolve(), rollup_builtins(), rollup_common()]
             })
             .pipe(source(file.relative))
             .pipe(gulp.dest('./build'))
@@ -103,9 +104,9 @@ gulp.task('test', ['build', 'pretest'], () => {
                 'es2015'
             ]
         }))
-        .pipe(gulp.dest('build/tests'))
-        .pipe(mocha())
-        .pipe(istanbul.writeReports())
+       .pipe(gulp.dest('build/tests'))
+       .pipe(mocha())
+       .pipe(istanbul.writeReports())
 })
 
 

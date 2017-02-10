@@ -53,8 +53,8 @@
     "gulp-istanbul": "^1.1.1",
     "gulp-mocha": "^3.0.1",
     "isparta": "^4.0.0",
-    "nano-event-emitter": "^1.0.1",
     "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-commonjs": "^7.0.0",
     "rollup-plugin-multi-entry": "^2.0.1",
     "rollup-plugin-node-builtins": "^2.0.0",
     "rollup-plugin-node-resolve": "^2.0.0",
@@ -63,6 +63,6 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
-    "rxjs-es": "^5.0.0-beta.12"
+    "rxjs": "^5.1.0",
   }
 }
