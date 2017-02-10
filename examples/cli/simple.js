@@ -24,3 +24,4 @@ let operators = [
 //let state = cycle(individuals, operators)
 do_n_cycles(10, individuals, operators)
 //console.log(state.individuals)
+console.log(state.global_parameters)

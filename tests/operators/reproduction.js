@@ -106,10 +106,13 @@ describe('Complete Reproduction', () => {
         let individuals = generate_n_inds(orig_size, () =>
             assign_random_sex(generate_basic_individual(test_utils.empty_species)))
         let cycle = 2
-        let after_change = rep.change({}, cycle, individuals, {})
-        let new_individuals = after_change.individuals
-        assert.equal(new_individuals.length, 30)
-        assert.equal(new_individuals[new_individuals.length - 1].cycle_born, 2)
+        let state = {
+            cycle: 2,
+            individuals
+        }
+        rep.change(state)
+        assert.equal(state.individuals.length, 30)
+        assert.equal(state.individuals[state.individuals.length - 1].cycle_born, 2)
         //TBD XXX: Some more testing...
     })
     it('Sexual Reproduction - with genome', () => {
