@@ -23,7 +23,7 @@ const test_files = ['./tests/**/*.js']
 
 const pkg = require('./package.json')
 
-gulp.task('examples', () => {
+gulp.task('examples_cli', () => {
     return gulp.src('examples/cli/*.js')
         .pipe(flatmap( (stream, file) => {
             return rollup({
@@ -31,7 +31,25 @@ gulp.task('examples', () => {
                 plugins: [rollup_resolve(), rollup_builtins(), rollup_common()]
             })
             .pipe(source(file.relative))
-            .pipe(gulp.dest('./build'))
+            .pipe(gulp.dest('./build/examples/cli'))
+        }))
+})
+
+gulp.task('examples_web', () => {
+    return gulp.src('examples/web/*.js')
+        .pipe(flatmap( (stream, file) => {
+            return rollup({
+                entry: file.path,
+                format: 'iife',
+                moduleName: 'metis',
+                plugins: [
+                    rollup_resolve(),
+                    rollup_builtins(),
+                    rollup_common()]
+            })
+            .pipe(source(file.relative))
+//            .pipe(babel(({presets: ['es2015']})))
+            .pipe(gulp.dest('./build/examples/web'))
         }))
 })
 
@@ -52,7 +70,7 @@ gulp.task('rollup', () => {
         .pipe(gulp.dest('./build'))
 })
 
-gulp.task('build', ['rollup', 'examples'], () => {
+gulp.task('build', ['rollup', 'examples_cli', 'examples_web'], () => {
     return gulp.src(lib_code, {
             read: true
         })
