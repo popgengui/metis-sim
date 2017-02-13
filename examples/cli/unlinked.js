@@ -14,7 +14,7 @@ import {SexStatistics} from '../../lib/metis/operators/stats/demo'
 import {do_n_cycles} from '../../lib/metis/simulator'
 
 const genome_size = 5
-const size = 20
+const size = 200
 let unlinked_genome = genotype.generate_unlinked_genome(genome_size,
     () => {return new genotype.SNP()})
 console.log(unlinked_genome)
