@@ -4,16 +4,28 @@
     <script src="http://vega.github.io/vega-lite/vega-lite.js" charset="utf-8"></script>
     <script src="http://vega.github.io/vega-editor/vendor/vega-embed.js" charset="utf-8"></script>
     
-    <script src='basic.js'></script>
+    <script src='metis.js'></script>
     <script>
-    metis.simulate()
+
+    let values = []
+    let cycle = 1
+    let genome_size = 5
+    let record_stats = (stats) => {
+      let exp_he = stats.ExpHe
+      for (let i=0; i<genome_size; i++) {
+          values.push({cycle, ExpHe: exp_he.unlinked[i], marker: 'M' + i})
+      }
+      cycle++
+    }
+    metis.simulate(record_stats, 100, genome_size)
+    console.log(999, data[0])
     </script>
 
     <div id="vis"></div>
     <script>
     let spec = `
 {
-  "description": "A simple bar chart with embedded data.",
+  "description": "ExpHe over cycles",
   "data": {
     "values": [
       {"a": "A","b": 28}, {"a": "B","b": 55}, {"a": "C","b": 43},
@@ -21,15 +33,15 @@
       {"a": "G","b": 19}, {"a": "H","b": 87}, {"a": "I","b": 52}
     ]
   },
-  "mark": "bar",
+  "mark": "line",
   "encoding": {
-    "x": {"field": "a", "type": "ordinal"},
-    "y": {"field": "b", "type": "quantitative"}
+    "x": {"field": "cycle", "type": "quantitative"},
+    "y": {"field": "ExpHe", "type": "quantitative"},
+    "color": {"field": "marker", "type": "nominal"}
   }
 }`
     let jspec = JSON.parse(spec)
-    console.log(jspec.data)
-    console.log(typeof jspec.data)
+    jspec.data.values = values
     let embedSpec = {
       mode: "vega-lite",
       spec: jspec
