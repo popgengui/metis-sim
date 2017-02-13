@@ -35,11 +35,9 @@ gulp.task('examples_cli', () => {
         }))
 })
 
-gulp.task('examples_web', () => {
-    return gulp.src('examples/web/*.js')
-        .pipe(flatmap( (stream, file) => {
-            return rollup({
-                entry: file.path,
+gulp.task('web', () => {
+    return rollup({
+                entry: 'web/metis.js',
                 format: 'iife',
                 moduleName: 'metis',
                 plugins: [
@@ -47,10 +45,9 @@ gulp.task('examples_web', () => {
                     rollup_builtins(),
                     rollup_common()]
             })
-            .pipe(source(file.relative))
+            .pipe(source('metis.js'))
 //            .pipe(babel(({presets: ['es2015']})))
-            .pipe(gulp.dest('./build/examples/web'))
-        }))
+            .pipe(gulp.dest('./build/web'))
 })
 
 gulp.task('rollup', () => {
@@ -70,7 +67,7 @@ gulp.task('rollup', () => {
         .pipe(gulp.dest('./build'))
 })
 
-gulp.task('build', ['rollup', 'examples_cli', 'examples_web'], () => {
+gulp.task('build', ['rollup', 'examples_cli', 'web'], () => {
     return gulp.src(lib_code, {
             read: true
         })
