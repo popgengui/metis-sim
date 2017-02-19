@@ -1,5 +1,5 @@
 {
-  "name": "metis",
+  "name": "@tiagoantao/metis",
   "version": "0.0.1",
   "description": "Population Genetics simulator in JavaScript",
   "license": "AGPL-3.0",
