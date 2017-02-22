@@ -6,7 +6,6 @@ let gulp = require('gulp'),
     rollup_babel = require('rollup-plugin-babel'),
     rollup_multi = require('rollup-plugin-multi-entry'),
     rollup_resolve = require('rollup-plugin-node-resolve'),
-    rollup_builtins = require('rollup-plugin-node-builtins'),
     rollup_common = require('rollup-plugin-commonjs'),
     babel = require('gulp-babel'),
     rollup = require('rollup-stream'),
@@ -28,7 +27,13 @@ gulp.task('examples_cli', () => {
         .pipe(flatmap( (stream, file) => {
             return rollup({
                 entry: file.path,
-                plugins: [rollup_resolve(), rollup_builtins(), rollup_common()]
+                plugins: [
+                    rollup_resolve({preferBuiltins: false}),
+                rollup_common({
+                    namedExports: {
+                        'node_modules/events/events.js' : ['EventEmitter']
+                    }
+                })]
             })
             .pipe(source(file.relative))
             .pipe(gulp.dest('./build/examples/cli'))
@@ -41,9 +46,12 @@ gulp.task('web', () => {
                 format: 'iife',
                 moduleName: 'metis',
                 plugins: [
-                    rollup_resolve(),
-                    rollup_builtins(),
-                    rollup_common()]
+                    rollup_resolve({preferBuiltins: false}),
+                    rollup_common({
+                        namedExports: {
+                            'node_modules/events/events.js' : ['EventEmitter']
+                        }
+                    })]
             })
             .pipe(source('metis.js'))
 //            .pipe(babel(({presets: ['es2015']})))
@@ -59,8 +67,12 @@ gulp.task('rollup', () => {
                     //presets: [ "es2015-rollup" ],
                     include: lib_code
                 }),
-                rollup_resolve(),
-                rollup_builtins()
+                rollup_resolve({preferBuiltins: false}),
+                rollup_common({
+                    namedExports: {
+                        'node_modules/events/events.js' : ['EventEmitter']
+                    }
+                })
             ]
         })
         .pipe(source('metis.js'))

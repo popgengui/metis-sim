@@ -1,6 +1,6 @@
 {
   "name": "@tiagoantao/metis",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Population Genetics simulator in JavaScript",
   "license": "AGPL-3.0",
   "repository": {
@@ -51,13 +51,13 @@
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-commonjs": "^7.0.0",
     "rollup-plugin-multi-entry": "^2.0.1",
-    "rollup-plugin-node-builtins": "^2.0.0",
     "rollup-plugin-node-resolve": "^2.0.0",
     "rollup-stream": "^1.16.0",
     "run-sequence": "^1.2.2",
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
+    "events": "^1.1.1",
     "rxjs": "^5.1.0"
   }
 }
