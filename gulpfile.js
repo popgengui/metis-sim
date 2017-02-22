@@ -51,7 +51,8 @@ gulp.task('web', () => {
                         namedExports: {
                             'node_modules/events/events.js' : ['EventEmitter']
                         }
-                    })]
+                    })
+                ]
             })
             .pipe(source('metis.js'))
 //            .pipe(babel(({presets: ['es2015']})))
@@ -63,15 +64,15 @@ gulp.task('rollup', () => {
             entry: lib_code,
             plugins: [
                 rollup_multi(),
-                rollup_babel({
-                    //presets: [ "es2015-rollup" ],
-                    include: lib_code
-                }),
                 rollup_resolve({preferBuiltins: false}),
                 rollup_common({
                     namedExports: {
                         'node_modules/events/events.js' : ['EventEmitter']
                     }
+                }),
+                rollup_babel({
+                    //presets: [ "es2015-rollup" ],
+                    include: lib_code
                 })
             ]
         })
