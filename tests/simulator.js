@@ -15,6 +15,7 @@ describe('Basic simulation', () => {
             global_parameters: {}
         }
         simulator.cycle(state)
+        assert.equal(state.cycle, 1)
         assert.equal(state.individuals.length, orig_individuals.length)
     })
     it('Reproduction simulation', () => {
@@ -30,5 +31,16 @@ describe('Basic simulation', () => {
         }
         simulator.cycle(state)
         assert.equal(state.individuals.length, size + rep_size)
+    })
+})
+
+
+describe('Several Cycles', () => {
+    it('do_n_cycles - no ops', () => {
+        let individuals = utils.generate_n_basic_individuals(10)
+        let orig_individuals = individuals.slice() 
+        let state = simulator.do_n_cycles(2, individuals, [])
+        assert.equal(state.cycle, 3)
+        assert.equal(state.individuals.length, orig_individuals.length)
     })
 })

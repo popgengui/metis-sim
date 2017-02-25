@@ -1,8 +1,7 @@
 import chai from 'chai'
 var assert = chai.assert
 
-import * as operator from '../lib/metis/operator.js'
-//import * as test_utils from './test_utils.js'
+import * as operator from '../lib/metis/operator'
 
 describe('CycleStopOperator', () => {
     let op = new operator.CycleStopOperator(2)
