@@ -44,3 +44,22 @@ describe('Several Cycles', () => {
         assert.equal(state.individuals.length, orig_individuals.length)
     })
 })
+
+
+describe('Async', () => {
+    it('do_n_cycles - async', (done) => {
+        let individuals = utils.generate_n_basic_individuals(10)
+        let orig_individuals = individuals.slice() 
+        let reporter = (state, callback) => {
+            if (callback) {
+                callback()
+            }
+            else {
+                assert.equal(state.cycle, 3)
+                assert.equal(state.individuals.length, orig_individuals.length)
+                done()
+            }
+        }
+        let state = simulator.do_n_cycles(2, individuals, [], 0, reporter)
+    })
+})
