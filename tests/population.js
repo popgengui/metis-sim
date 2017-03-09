@@ -36,3 +36,12 @@ describe('Population structure', () => {
         Math.random = real_random
     })
 })
+
+
+describe('Migration', () => {
+    it('fixed individuals', () => {
+        let inds = population.generate_n_inds(2, () =>
+            individual.generate_basic_individual(utils.empty_species))
+        population.assign_fixed_size_population(inds, 2)
+    })
+})

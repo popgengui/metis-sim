@@ -127,7 +127,6 @@ describe('Complete Reproduction', () => {
         let individuals = generate_n_inds(orig_size, () =>
             assign_random_sex(generate_basic_individual(test_utils.empty_species)))
         assign_fixed_size_population(individuals, 2)
-        let cycle = 2
         let state = {
             cycle: 2,
             individuals
