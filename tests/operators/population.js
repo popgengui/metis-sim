@@ -1,9 +1,9 @@
 import chai from 'chai'
 var assert = chai.assert
 
-import * as reproduction from '../../lib/metis/operators/reproduction'
+import * as population from '../../lib/metis/operators/population'
 
-describe('Individual Choosers', () => {
+describe('Island model migration', () => {
     it('Wrapper', () => {
     })
 })
