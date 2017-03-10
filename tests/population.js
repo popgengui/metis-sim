@@ -17,8 +17,7 @@ describe('Population generation', () => {
 
 describe('Population structure', () => {
     it('fixed size', () => {
-        let inds = population.generate_n_inds(2, () =>
-            individual.generate_basic_individual(utils.empty_species))
+        let inds = utils.generate_n_basic_individuals(2)
         population.assign_fixed_size_population(inds, 2)
         assert.equal(inds.length, 2)
         assert.equal(inds[0].pop, 0)
@@ -27,8 +26,7 @@ describe('Population structure', () => {
     it('random size per deme', () => {
         let real_random = Math.random
         Math.random = () => 0.9
-        let inds = population.generate_n_inds(2, () =>
-            individual.generate_basic_individual(utils.empty_species))
+        let inds = utils.generate_n_basic_individuals(2)
         population.assign_random_population(inds, 2)
         assert.equal(inds.length, 2)
         assert.equal(inds[0].pop, 1)
@@ -40,8 +38,7 @@ describe('Population structure', () => {
 
 describe('Migration', () => {
     it('fixed individuals', () => {
-        let inds = population.generate_n_inds(2, () =>
-            individual.generate_basic_individual(utils.empty_species))
+        let inds = utils.generate_n_basic_individuals(2)
         population.assign_fixed_size_population(inds, 2)
         population.migrate_island_fixed(inds, 1)
         assert.equal(inds[0].pop, 1)
