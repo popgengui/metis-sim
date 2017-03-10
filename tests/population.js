@@ -43,5 +43,8 @@ describe('Migration', () => {
         let inds = population.generate_n_inds(2, () =>
             individual.generate_basic_individual(utils.empty_species))
         population.assign_fixed_size_population(inds, 2)
+        population.migrate_island_fixed(inds, 1)
+        assert.equal(inds[0].pop, 1)
+        assert.equal(inds[1].pop, 0)
     })
 })
