@@ -57,7 +57,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
-    "@tiagoantao/pyes6": "^0.0.2",
+    "@tiagoantao/pyes6": "0.0.2",
     "events": "^1.1.1",
     "rxjs": "^5.1.0"
   }
