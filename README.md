@@ -5,4 +5,3 @@
 [![dependencies Status](https://david-dm.org/tiagoantao/metis/status.svg)](https://david-dm.org/tiagoantao/metis) [![devDependencies Status](https://david-dm.org/tiagoantao/metis/dev-status.svg)](https://david-dm.org/tiagoantao/metis?type=dev)
 
 
-**If you use metis, you will need to use [rollup.js](http://rollupjs.org)**
