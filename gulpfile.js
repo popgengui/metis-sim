@@ -16,7 +16,7 @@ let gulp = require('gulp'),
     flatmap = require('gulp-flatmap'),
     mocha = require('gulp-mocha')
 
-const lib_code = ['./lib/**/*.js']
+const lib_code = ['./lib/metis/*.js']
 const lint_files = ['*.js', './tests/**/*.js'].concat(lib_code)
 const test_files = ['./tests/**/*.js']
 
@@ -44,7 +44,7 @@ gulp.task('web', () => {
     return rollup({
                 entry: 'web/metis.js',
                 format: 'iife',
-                moduleName: 'metis',
+                name: 'metis',
                 plugins: [
                     rollup_resolve({preferBuiltins: false}),
                     rollup_common({
@@ -55,13 +55,13 @@ gulp.task('web', () => {
                 ]
             })
             .pipe(source('metis.js'))
-//            .pipe(babel(({presets: ['es2015']})))
+            //.pipe(babel(({presets: ['es2015']})))
             .pipe(gulp.dest('./build/web'))
 })
 
 gulp.task('rollup', () => {
     return rollup({
-            entry: lib_code,
+            input: lib_code,
             plugins: [
                 rollup_multi(),
                 rollup_resolve({preferBuiltins: false}),
@@ -114,7 +114,7 @@ gulp.task('doc', () => {
 
 
 gulp.task('pretest', () => {
-    return gulp.src('build/' + lib_code)
+    return gulp.src('build/' + lib_code[0]) //XXX silly
         .pipe(istanbul({
             instrumenter: require('isparta').Instrumenter
         }))
