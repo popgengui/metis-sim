@@ -47,6 +47,6 @@
   },
   "dependencies": {
     "events": "^1.1.1",
-    "rxjs": "^5.1.0"
+    "rxjs": "^5.4.3"
   }
 }
