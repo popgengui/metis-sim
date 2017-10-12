@@ -1,7 +1,7 @@
-import chai from 'chai'
-var assert = chai.assert
+const chai = require('chai')
+const assert = chai.assert
 
-import * as genotype from '../lib/metis/genotype.js'
+const genotype = require('../../lib/metis/all.js')
 
 describe('Markers without linkage information', () => {
     it('Marker', () => {
