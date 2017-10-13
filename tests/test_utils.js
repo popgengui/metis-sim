@@ -1,32 +1,28 @@
-import * as genotype from '../lib/metis/genotype.js'
-import * as species from '../lib/metis/species.js'
-import * as individual from '../lib/metis/individual.js'
-import * as integrated from '../lib/metis/integrated.js'
-import * as population from '../lib/metis/population.js'
+const all = require('../../lib/metis/all.js')
 
 //Markers
-export let snp1 = new genotype.SNP()
-export let snp2 = new genotype.SNP()
-export let autosome_SNP = new genotype.Autosome(genotype.SNP)
+let snp1 = new all.gn_SNP()
+let snp2 = new all.gn_SNP()
+let autosome_SNP = all.gn_Autosome(all.gn_SNP)
 
 //Genome metadata
-export let metadata_genome_SNP = new Map()
+let metadata_genome_SNP = new Map()
 metadata_genome_SNP.set('SNP', autosome_SNP)
 
 
 
 //Genomes
-let two_SNP_chro_pair = new genotype.ChromosomePair([snp1, snp2])
+let two_SNP_chro_pair = new all.gn_ChromosomePair([snp1, snp2])
 let metadata_genome_two_SNP = {SNP2: two_SNP_chro_pair}
-let two_SNP_genome = new genotype.Genome(metadata_genome_two_SNP)
+let two_SNP_genome = new all.gn_Genome(metadata_genome_two_SNP)
 
 //Species
-export let empty_species = new species.Species('empty', undefined)
-export let two_SNP_species = new species.Species('2 SNPs', two_SNP_genome)
+let empty_species = new all.sp_Species('empty', undefined)
+let two_SNP_species = new all.sp_Species('2 SNPs', two_SNP_genome)
 
 
 //Population support
-export let generate_n_basic_individuals = (n, cycle=0) => {
+let generate_n_basic_individuals = (n, cycle=0) => {
     return population.generate_n_inds(n,
         () => individual.generate_basic_individual(empty_species, cycle))
 }

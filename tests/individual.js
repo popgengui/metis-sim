@@ -1,8 +1,8 @@
-import chai from 'chai'
-var assert = chai.assert
+const chai = require('chai')
+const assert = chai.assert
 
-import * as individual from '../lib/metis/individual.js'
-import * as test_utils from './test_utils.js'
+const individual = require('../../lib/metis/all.js')
+const test_utils = require('./test_utils.js')
 
 describe('Individual object', () => {
     it('Basic creation', () => {
