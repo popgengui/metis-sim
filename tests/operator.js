@@ -1,10 +1,10 @@
-import chai from 'chai'
-var assert = chai.assert
+const chai = require('chai')
+const assert = chai.assert
 
-import * as operator from '../lib/metis/operator'
+const operator = require('../../lib/metis/all.js')
 
 describe('CycleStopOperator', () => {
-    let op = new operator.CycleStopOperator(2)
+    let op = new operator.ops_CycleStopOperator(2)
     let state = {global_parameters: {}}
     it('Should not stop now', () => {
         state.cycle = 1
