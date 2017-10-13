@@ -1,15 +1,13 @@
-import chai from 'chai'
-var assert = chai.assert
+const chai = require('chai')
+const assert = chai.assert
 
-import * as population from '../lib/metis/population.js'
-import * as individual from '../lib/metis/individual.js'
-import * as integrated from '../lib/metis/integrated.js'
-import * as utils from './test_utils.js'
+const all = require('../../lib/metis/all.js')
+const utils = require('./test_utils.js')
 
 describe('Population generation', () => {
     it('single individual', () => {
-        let inds = population.generate_n_inds(1, () =>
-            individual.generate_basic_individual(utils.empty_species))
+        let inds = all.p_generate_n_inds(1, () =>
+            all.i_generate_basic_individual(utils.empty_species))
         assert.equal(inds.length, 1)
     })
 })
@@ -18,7 +16,7 @@ describe('Population generation', () => {
 describe('Population structure', () => {
     it('fixed size', () => {
         let inds = utils.generate_n_basic_individuals(2)
-        population.assign_fixed_size_population(inds, 2)
+        all.p_assign_fixed_size_population(inds, 2)
         assert.equal(inds.length, 2)
         assert.equal(inds[0].pop, 0)
         assert.equal(inds[1].pop, 1)
@@ -27,7 +25,7 @@ describe('Population structure', () => {
         let real_random = Math.random
         Math.random = () => 0.9
         let inds = utils.generate_n_basic_individuals(2)
-        population.assign_random_population(inds, 2)
+        all.p_assign_random_population(inds, 2)
         assert.equal(inds.length, 2)
         assert.equal(inds[0].pop, 1)
         assert.equal(inds[1].pop, 1)
@@ -39,8 +37,8 @@ describe('Population structure', () => {
 describe('Migration', () => {
     it('fixed individuals', () => {
         let inds = utils.generate_n_basic_individuals(2)
-        population.assign_fixed_size_population(inds, 2)
-        population.migrate_island_fixed(inds, 1)
+        all.p_assign_fixed_size_population(inds, 2)
+        all.p_migrate_island_fixed(inds, 1)
         assert.equal(inds[0].pop, 1)
         assert.equal(inds[1].pop, 0)
     })
