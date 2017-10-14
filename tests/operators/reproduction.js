@@ -1,26 +1,27 @@
-import chai from 'chai'
-var assert = chai.assert
+const chai = require('chai')
+const assert = chai.assert
 
-import * as reproduction from '../../lib/metis/operators/reproduction'
-import {assign_random_sex, generate_basic_individual} from '../../lib/metis/individual'
-import {assign_fixed_size_population, generate_n_inds} from '../../lib/metis/population'
-import * as integrated from '../../lib/metis/integrated'
+const all = require('../../../lib/metis/all.js')
+const utils = require('../test_utils.js')
 
-import * as test_utils from '../test_utils'
+//import * as reproduction from '../../lib/metis/operators/reproduction'
+//import {assign_random_sex, generate_basic_individual} from '../../lib/metis/individual'
+//import {assign_fixed_size_population, generate_n_inds} from '../../lib/metis/population'
+//import * as integrated from '../../lib/metis/integrated'
 
 
-let male1 = generate_basic_individual(test_utils.empty_species, 0)
+let male1 = all.i_generate_basic_individual(utils.empty_species, 0)
 male1.is_female = false
-let female1 = generate_basic_individual(test_utils.empty_species, 0)
+let female1 = all.i_generate_basic_individual(utils.empty_species, 0)
 female1.is_female = true
 
-let gmale1 = integrated.generate_individual_with_genome(test_utils.two_SNP_species, 0, integrated.create_test_genome)
+let gmale1 = all.integrated_generate_individual_with_genome(utils.two_SNP_species, 0, all.integrated_create_test_genome)
 gmale1.is_female = false
-let gfemale1 = integrated.generate_individual_with_genome(test_utils.two_SNP_species, 0, integrated.create_test_genome)
+let gfemale1 = all.integrated_generate_individual_with_genome(utils.two_SNP_species, 0, all.integrated_create_test_genome)
 gfemale1.is_female = true
 
 
-let wrapper = new reproduction.WrapperChooser([male1, female1])
+let wrapper = new all.ops_rep_WrapperChooser([male1, female1])
 
 
 describe('Individual Choosers', () => {
@@ -34,7 +35,7 @@ describe('Individual Choosers', () => {
         assert.equal(choice.done, true)
     })
     it('SexChooser', () => {
-        let sex_chooser = new reproduction.SexChooser(wrapper, true)
+        let sex_chooser = new all.ops_rep_SexChooser(wrapper, true)
         let choices = sex_chooser.choose()
         let choice = choices.next()
         assert.equal(choice.value.is_female, true)
@@ -43,7 +44,7 @@ describe('Individual Choosers', () => {
     })
     it('RandomChooser', () => {
         //Not perfect
-        let random_chooser = new reproduction.RandomChooser(wrapper)
+        let random_chooser = new all.ops_rep_RandomChooser(wrapper)
         let choices = random_chooser.choose()
         choices.next()
         choices.next()
