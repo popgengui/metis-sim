@@ -1,11 +1,11 @@
-import chai from 'chai'
-var assert = chai.assert
+const chai = require('chai')
+const assert = chai.assert
 
-import * as species from '../lib/metis/species.js'
+const species = require('../../lib/metis/all.js')
 
 describe('Species object', () => {
     it('Basic creation', () => {
-        let sp = new species.Species('test', undefined)
+        let sp = new species.sp_Species('test', undefined)
         assert.equal(sp.name, 'test')
     })
 })
