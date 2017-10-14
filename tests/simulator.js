@@ -1,9 +1,8 @@
-import chai from 'chai'
-var assert = chai.assert
+const chai = require('chai')
+const assert = chai.assert
 
-import * as simulator from '../lib/metis/simulator.js'
-import * as reproduction from '../lib/metis/operators/reproduction.js'
-import * as utils from './test_utils.js'
+const all = require('../../lib/metis/all.js')
+const utlis = require('./test_utils.js')
 
 describe('Basic simulation', () => {
     it('No Ops simulation', () => {
@@ -14,7 +13,7 @@ describe('Basic simulation', () => {
             cycle: 0,
             global_parameters: {}
         }
-        simulator.cycle(state)
+        all.sim_cycle(state)
         assert.equal(state.cycle, 1)
         assert.equal(state.individuals.length, orig_individuals.length)
     })
@@ -29,7 +28,7 @@ describe('Basic simulation', () => {
             cycle: 0,
             global_parameters: {}
         }
-        simulator.cycle(state)
+        all.sim_cycle(state)
         assert.equal(state.individuals.length, size + rep_size)
     })
 })
@@ -39,7 +38,7 @@ describe('Several Cycles', () => {
     it('do_n_cycles - no ops', () => {
         let individuals = utils.generate_n_basic_individuals(10)
         let orig_individuals = individuals.slice() 
-        let state = simulator.do_n_cycles(2, individuals, [])
+        let state = all.sim_do_n_cycles(2, individuals, [])
         assert.equal(state.cycle, 3)
         assert.equal(state.individuals.length, orig_individuals.length)
     })
@@ -60,6 +59,6 @@ describe('Async', () => {
                 done()
             }
         }
-        let state = simulator.do_n_cycles(2, individuals, [], 0, reporter)
+        let state = all.sim_do_n_cycles(2, individuals, [], 0, reporter)
     })
 })
