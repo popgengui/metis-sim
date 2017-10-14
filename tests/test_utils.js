@@ -28,3 +28,4 @@ let generate_n_basic_individuals = (n, cycle=0) => {
 }
 
 module.exports.generate_n_basic_individuals = generate_n_basic_individuals
+module.exports.two_SNP_species = two_SNP_species
