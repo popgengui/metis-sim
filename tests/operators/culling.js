@@ -14,7 +14,7 @@ describe('Culling', () => {
             cycle: 1,
             operators: []
         }
-        all.ops_culling_kill_older.change(state)
+        kill_older.change(state)
         assert.equal(state.individuals.length, 0)
     })
     it('Save all individuals', () => {
@@ -24,7 +24,7 @@ describe('Culling', () => {
             individuals,
             operators: []
         }
-        all.ops_culling_kill_older.change(state)
+        kill_older.change(state)
         assert.equal(state.individuals.length, 10)
     })
     it('Save one individual', () => {
@@ -36,7 +36,7 @@ describe('Culling', () => {
             individuals: add_individuals,
             operators: []
         }
-        all.ops_culling.kill_older.change(state)
+        kill_older.change(state)
         assert.equal(state.individuals.length, 1)
     })
 })

@@ -29,7 +29,7 @@ describe('CycleStopOperator', () => {
 
 describe('RxOperator', () => {
     it('Async test', (done) => {
-        let op = new operator.RxOperator()
+        let op = new operator.ops_RxOperator()
         op.subscribe((state) => {
             assert.equal(state.ok, true)
             done()

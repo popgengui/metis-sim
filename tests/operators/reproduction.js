@@ -56,8 +56,8 @@ describe('Individual Choosers', () => {
 
 describe('Mating', () => {
     it('RandomMater', () => {
-        //Insufficient
-        let random_mater = new reproduction.RandomMater(null, [female1, male1])
+        //XXX Insufficient
+        let random_mater = new all.ops_rep_RandomMater(null, [female1, male1])
         let mate_generator = random_mater.mate()
         let mates = mate_generator.next()
         assert.equal(mates.value.mother.is_female, true)
@@ -69,10 +69,10 @@ describe('Mating', () => {
 describe('Individual Generators', () => {
     it('Sexual Generator - no genome', () => {
         let mock_reproductor = {
-            species: test_utils.empty_species,
+            species: utils.empty_species,
             cycle: 5
         }
-        let generator = new reproduction.NoGenomeSexualGenerator(mock_reproductor, [])
+        let generator = new all.ops_rep_NoGenomeSexualGenerator(mock_reproductor, [])
         generator.mother = female1
         generator.father = male1
         let individual = generator.generate()
@@ -81,10 +81,10 @@ describe('Individual Generators', () => {
     it('Standard Sexual Generator - with genome', () => {
         //XXX TBD Very incomplete
         let mock_reproductor = {
-            species: test_utils.two_SNP_species,
+            species: utils.two_SNP_species,
             cycle: 5
         }
-        let generator = new reproduction.SexualGenerator(mock_reproductor)
+        let generator = new all.ops_rep_SexualGenerator(mock_reproductor)
         generator.mother = gfemale1
         generator.father = gmale1
         let individual = generator.generate()
@@ -95,17 +95,17 @@ describe('Individual Generators', () => {
 
 describe('Complete Reproduction', () => {
     it('Base Reproduction', () => {
-        let rep = new reproduction.BaseReproduction(test_utils.empty_species, 10)
-        assert.equal(rep.species, test_utils.empty_species)
+        let rep = new all.ops_rep_BaseReproduction(utils.empty_species, 10)
+        assert.equal(rep.species, utils.empty_species)
         assert.equal(rep.size, 10)
     })
     it('Sexual Reproduction - no genome', () => {
-        let rep = new reproduction.NoGenomeSexualReproduction(test_utils.empty_species, 10)
-        assert.equal(rep.species, test_utils.empty_species)
+        let rep = new all.ops_rep_NoGenomeSexualReproduction(utils.empty_species, 10)
+        assert.equal(rep.species, utils.empty_species)
         assert.equal(rep.size, 10)
         let orig_size = 20
-        let individuals = generate_n_inds(orig_size, () =>
-            assign_random_sex(generate_basic_individual(test_utils.empty_species)))
+        let individuals = all.p_generate_n_inds(orig_size, () =>
+            all.i_assign_random_sex(all.i_generate_basic_individual(utils.empty_species)))
         let cycle = 2
         let state = {
             cycle: 2,
@@ -119,15 +119,15 @@ describe('Complete Reproduction', () => {
     it('Sexual Reproduction - with genome', () => {
     })
     it('Structured Sexual Reproduction - no genome', () => {
-        let rep = new reproduction.NoGenomeStructuredSexualReproduction(
-            test_utils.empty_species, 10, 2)
-        assert.equal(rep.species, test_utils.empty_species)
+        let rep = new all.ops_rep_NoGenomeStructuredSexualReproduction(
+            utils.empty_species, 10, 2)
+        assert.equal(rep.species, utils.empty_species)
         assert.equal(rep.pop_size, 10)
         assert.equal(rep.num_pops, 2)
         let orig_size = 20
-        let individuals = generate_n_inds(orig_size, () =>
-            assign_random_sex(generate_basic_individual(test_utils.empty_species)))
-        assign_fixed_size_population(individuals, 2)
+        let individuals = all.p_generate_n_inds(orig_size, () =>
+            all.i_assign_random_sex(all.i_generate_basic_individual(utils.empty_species)))
+        all.p_assign_fixed_size_population(individuals, 2)
         let state = {
             cycle: 2,
             individuals
@@ -145,12 +145,12 @@ describe('Complete Reproduction', () => {
 describe('Annotators', () => {
     it('Parents', () => {
         let individual = {}
-        reproduction.annotate_with_parents(individual, [female1, male1])
+        all.ops_rep_annotate_with_parents(individual, [female1, male1])
         assert.equal(individual.mother, female1.id)
         assert.equal(individual.father, male1.id)
     })
     it('transmit_sexual_genome', () => {
-        let individual = generate_basic_individual(test_utils.two_SNP_species, 0)
-        reproduction.transmit_sexual_genome(individual, [gfemale1, gmale1])
+        let individual = all.i_generate_basic_individual(utils.two_SNP_species, 0)
+        all.ops_rep_transmit_sexual_genome(individual, [gfemale1, gmale1])
     })
 })

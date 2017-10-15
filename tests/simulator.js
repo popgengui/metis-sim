@@ -2,7 +2,7 @@ const chai = require('chai')
 const assert = chai.assert
 
 const all = require('../../lib/metis/all.js')
-const utlis = require('./test_utils.js')
+const utils = require('./test_utils.js')
 
 describe('Basic simulation', () => {
     it('No Ops simulation', () => {
@@ -21,7 +21,7 @@ describe('Basic simulation', () => {
         let size = 10
         let rep_size = 20
         let individuals = utils.generate_n_basic_individuals(size)
-        let operators = [new reproduction.NoGenomeSexualReproduction(
+        let operators = [new all.ops_rep_NoGenomeSexualReproduction(
             utils.empty_species, rep_size)]
         let state = {
             individuals, operators,
