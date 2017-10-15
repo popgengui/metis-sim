@@ -1,6 +1,6 @@
 {
   "name": "@tiagoantao/metis",
-  "version": "0.0.6",
+  "version": "0.0.6-SNAPSHOT",
   "description": "Population Genetics simulator in JavaScript",
   "license": "AGPL-3.0",
   "repository": {
