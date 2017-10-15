@@ -1,6 +1,6 @@
 {
-  "extends": "eslint:recommended",
+1;2802;0c  "extends": "eslint:recommended",
   "rules": {
-    "semi": "never"
+    "semi": 2
   }
 }
