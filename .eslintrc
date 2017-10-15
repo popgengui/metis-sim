@@ -1,9 +1,16 @@
 {
   "extends": "eslint:recommended",
+  "env": {
+    "browser": true,
+    "node": true
+  },
   "parserOptions": {
     "ecmaVersion": 6
   },
   "rules": {
-    "semi": 2
+    "no-extra-semi": 1,
+    "no-unreachable": 1,
+    "no-unused-vars": ["error", { "varsIgnorePattern": "^_" }],
+    "semi": 0
   }
 }

@@ -1,12 +1,13 @@
 {
   "name": "@tiagoantao/metis",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Population Genetics simulator in JavaScript",
   "license": "AGPL-3.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tiagoantao/metis.git"
   },
+  "main": "lib/metis/all.js", 
   "bugs": {
     "url": "https://github.com/tiagoantao/metis/issues",
     "email": "tiagoantao@gmail.com"

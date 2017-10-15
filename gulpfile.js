@@ -6,8 +6,6 @@ let gulp = require('gulp'),
     eslint = require('gulp-eslint'),
     gulpdoc = require('gulp-documentation'),
     istanbul = require('gulp-istanbul'),
-    source = require('vinyl-source-stream'),
-    flatmap = require('gulp-flatmap'),
     mocha = require('gulp-mocha')
 
 const lib_code = ['./lib/metis/*.js']
@@ -27,12 +25,7 @@ gulp.task('build', ['examples_cli'], () => {
 
 gulp.task('lint', () => {
     return gulp.src(lint_files)
-        .pipe(eslint({
-            ecmaVersion: 6,
-            envs: ['es6'],
-            parserOptions: {sourceType: 'module'},
-            useEslintrc: false
-        }))
+        .pipe(eslint())
         .pipe(eslint.format())
         .pipe(eslint.failOnError())
 })
