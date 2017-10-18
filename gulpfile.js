@@ -2,11 +2,11 @@
 /* eslint-env node */
 'use strict';
 
-let gulp = require('gulp'),
-    eslint = require('gulp-eslint'),
-    gulpdoc = require('gulp-documentation'),
-    istanbul = require('gulp-istanbul'),
-    mocha = require('gulp-mocha')
+const gulp = require('gulp'),
+      eslint = require('gulp-eslint'),
+      gulpdoc = require('gulp-documentation'),
+      istanbul = require('gulp-istanbul'),
+      mocha = require('gulp-mocha')
 
 const lib_code = ['./lib/metis/*.js']
 const lint_files = ['*.js', './tests/**/*.js'].concat(lib_code)
