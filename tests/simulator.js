@@ -38,7 +38,10 @@ describe('Several Cycles', () => {
     it('do_n_cycles - no ops', () => {
         let individuals = utils.generate_n_basic_individuals(10)
         let orig_individuals = individuals.slice() 
-        let state = all.sim_do_n_cycles(2, individuals, [])
+        let state = all.sim_do_n_cycles(2, {
+	    individuals, operators: [], global_parameters: {},
+	    cycle: 0
+	})
         assert.equal(state.cycle, 3)
         assert.equal(state.individuals.length, orig_individuals.length)
     })
@@ -59,6 +62,8 @@ describe('Async', () => {
                 done()
             }
         }
-        let state = all.sim_do_n_cycles(2, individuals, [], 0, reporter)
+        let state = all.sim_do_n_cycles(2,{
+	    individuals, operators: [],
+	    global_parameters: {}, cycle: 0}, reporter)
     })
 })
