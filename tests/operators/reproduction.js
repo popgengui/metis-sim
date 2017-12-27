@@ -106,7 +106,7 @@ describe('Complete Reproduction', () => {
         let orig_size = 20
         let individuals = all.p_generate_n_inds(orig_size, () =>
             all.i_assign_random_sex(all.i_generate_basic_individual(utils.empty_species)))
-        let cycle = 2
+        //let cycle = 2
         let state = {
             cycle: 2,
             individuals

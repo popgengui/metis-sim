@@ -7,7 +7,7 @@
     "type": "git",
     "url": "git+https://github.com/tiagoantao/metis.git"
   },
-  "main": "lib/metis/all.js", 
+  "main": "lib/metis/all.js",
   "bugs": {
     "url": "https://github.com/tiagoantao/metis/issues",
     "email": "tiagoantao@gmail.com"
@@ -37,6 +37,7 @@
     "chai": "^4.1.2",
     "coveralls": "^3.0.0",
     "documentation": "^5.3.2",
+    "eslint": "^4.14.0",
     "gulp": "^3.9.1",
     "gulp-documentation": "^3.1.0",
     "gulp-eslint": "^4.0.0",
