@@ -49,7 +49,7 @@ gulp.task('pretest', () => {
 })
 
 
-gulp.task('test', ['build', 'pretest'], () => {
+gulp.task('test', ['build', 'lint', 'pretest'], () => {
     return gulp.src(test_files, {read: true})
 	.pipe(gulp.dest('build/tests'))
 	.pipe(mocha())
