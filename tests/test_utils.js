@@ -1,4 +1,4 @@
-const all = require('../../lib/metis/all.js')
+const all = require('../../lib/metis-sim/all.js')
 
 //Markers
 let snp1 = new all.gn_SNP()

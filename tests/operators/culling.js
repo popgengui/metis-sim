@@ -1,7 +1,7 @@
 const chai = require('chai')
 const assert = chai.assert
 
-const all = require('../../../lib/metis/all.js')
+const all = require('../../../lib/metis-sim/all.js')
 const utils = require('../test_utils.js')
 
 describe('Culling', () => {

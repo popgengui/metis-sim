@@ -1,13 +1,13 @@
 const chai = require('chai')
 const assert = chai.assert
 
-const all = require('../../../lib/metis/all.js')
+const all = require('../../../lib/metis-sim/all.js')
 const utils = require('../test_utils.js')
 
-//import * as reproduction from '../../lib/metis/operators/reproduction'
-//import {assign_random_sex, generate_basic_individual} from '../../lib/metis/individual'
-//import {assign_fixed_size_population, generate_n_inds} from '../../lib/metis/population'
-//import * as integrated from '../../lib/metis/integrated'
+//import * as reproduction from '../../lib/metis-sim/operators/reproduction'
+//import {assign_random_sex, generate_basic_individual} from '../../lib/metis-sim/individual'
+//import {assign_fixed_size_population, generate_n_inds} from '../../lib/metis-sim/population'
+//import * as integrated from '../../lib/metis-sim/integrated'
 
 
 let male1 = all.i_generate_basic_individual(utils.empty_species, 0)

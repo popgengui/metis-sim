@@ -1,18 +1,18 @@
 {
-  "name": "@tiagoantao/metis",
+  "name": "@tiagoantao/metis-sim",
   "version": "0.0.7-SNAPSHOT",
   "description": "Population Genetics simulator in JavaScript",
   "license": "AGPL-3.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tiagoantao/metis.git"
+    "url": "git+https://github.com/tiagoantao/metis-sim.git"
   },
-  "main": "lib/metis/all.js",
+  "main": "lib/metis-sim/all.js",
   "bugs": {
-    "url": "https://github.com/tiagoantao/metis/issues",
+    "url": "https://github.com/tiagoantao/metis-sim/issues",
     "email": "tiagoantao@gmail.com"
   },
-  "homepage": "https://github.com/tiagoantao/metis",
+  "homepage": "https://github.com/tiagoantao/metis-sim",
   "scripts": {
     "lint": "gulp lint",
     "build": "gulp build",

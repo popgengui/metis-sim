@@ -1,7 +1,7 @@
 const chai = require('chai')
 const assert = chai.assert
 
-const genotype = require('../../lib/metis/all.js')
+const genotype = require('../../lib/metis-sim/all.js')
 
 describe('Markers without linkage information', () => {
     it('Marker', () => {

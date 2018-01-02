@@ -1,7 +1,7 @@
 //const chai = require('chai')
 //const assert = chai.assert
 
-//const genotype = require('../../lib/metis/all.js')
+//const genotype = require('../../lib/metis-sim/all.js')
 //const test_utils = require('./test_utils.js')
 
 describe('Individual object', () => {

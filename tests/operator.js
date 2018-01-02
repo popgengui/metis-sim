@@ -1,7 +1,7 @@
 const chai = require('chai')
 const assert = chai.assert
 
-const operator = require('../../lib/metis/all.js')
+const operator = require('../../lib/metis-sim/all.js')
 
 describe('CycleStopOperator', () => {
     let op = new operator.ops_CycleStopOperator(2)

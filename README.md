@@ -1,8 +1,8 @@
 # A Population Genetics simulator in JavaScript
 
-[![Build Status](https://travis-ci.org/tiagoantao/metis.svg?branch=master)](https://travis-ci.org/tiagoantao/metis) [![Coverage Status](https://coveralls.io/repos/github/tiagoantao/metis/badge.svg?branch=master)](https://coveralls.io/github/tiagoantao/metis?branch=master) [![Code Climate](https://codeclimate.com/github/tiagoantao/metis/badges/gpa.svg)](https://codeclimate.com/github/tiagoantao/metis) [![bitHound Overall Score](https://www.bithound.io/github/tiagoantao/metis/badges/score.svg)](https://www.bithound.io/github/tiagoantao/metis) [![Inline docs](http://inch-ci.org/github/tiagoantao/metis.svg?branch=master)](http://inch-ci.org/github/tiagoantao/metis)
+[![Build Status](https://travis-ci.org/tiagoantao/metis-sim.svg?branch=master)](https://travis-ci.org/tiagoantao/metis-sim) [![Coverage Status](https://coveralls.io/repos/github/tiagoantao/metis-sim/badge.svg?branch=master)](https://coveralls.io/github/tiagoantao/metis-sim?branch=master) [![Code Climate](https://codeclimate.com/github/tiagoantao/metis-sim/badges/gpa.svg)](https://codeclimate.com/github/tiagoantao/metis-sim) [![bitHound Overall Score](https://www.bithound.io/github/tiagoantao/metis-sim/badges/score.svg)](https://www.bithound.io/github/tiagoantao/metis-sim) [![Inline docs](http://inch-ci.org/github/tiagoantao/metis-sim.svg?branch=master)](http://inch-ci.org/github/tiagoantao/metis-sim)
 
-[![dependencies Status](https://david-dm.org/tiagoantao/metis/status.svg)](https://david-dm.org/tiagoantao/metis) [![devDependencies Status](https://david-dm.org/tiagoantao/metis/dev-status.svg)](https://david-dm.org/tiagoantao/metis?type=dev)
+[![dependencies Status](https://david-dm.org/tiagoantao/metis-sim/status.svg)](https://david-dm.org/tiagoantao/metis-sim) [![devDependencies Status](https://david-dm.org/tiagoantao/metis-sim/dev-status.svg)](https://david-dm.org/tiagoantao/metis-sim?type=dev)
 
 
 
@@ -20,7 +20,7 @@ go back to ES6 modules. For now, its a mess.
 ### Version 1
 
 Version 1 will support the teaching tool
-[metis-web](https://github.com/tiagoantao/metis-web). It will also
+[metis-sim-web](https://github.com/tiagoantao/metis-web). It will also
 be runnable on Node.JS as a stand-alone simulator
 
 ### Version 2

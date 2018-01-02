@@ -1,7 +1,7 @@
 const chai = require('chai')
 const assert = chai.assert
 
-const individual = require('../../lib/metis/all.js')
+const individual = require('../../lib/metis-sim/all.js')
 const test_utils = require('./test_utils.js')
 
 describe('Individual object', () => {

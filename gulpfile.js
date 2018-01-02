@@ -8,7 +8,7 @@ const gulp = require('gulp'),
       istanbul = require('gulp-istanbul'),
       mocha = require('gulp-mocha')
 
-const lib_code = ['./lib/metis/*.js']
+const lib_code = ['./lib/metis-sim/*.js']
 const lint_files = ['*.js', './tests/**/*.js'].concat(lib_code)
 const test_files = ['./tests/**/*.js']
 
