@@ -15,11 +15,13 @@ describe('Population generation', () => {
 
 describe('Population structure', () => {
     it('fixed size', () => {
-        let inds = utils.generate_n_basic_individuals(2)
+        let inds = utils.generate_n_basic_individuals(4)
         all.p_assign_fixed_size_population(inds, 2)
-        assert.equal(inds.length, 2)
+        assert.equal(inds.length, 4)
         assert.equal(inds[0].pop, 0)
         assert.equal(inds[1].pop, 1)
+        assert.equal(inds[2].pop, 0)
+        assert.equal(inds[3].pop, 1)
     })
     it('random size per deme', () => {
         let real_random = Math.random
