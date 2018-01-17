@@ -37,11 +37,21 @@ describe('Population structure', () => {
 
 
 describe('Migration', () => {
-    it('fixed individuals', () => {
+    it('fixed individuals - deme size 1', () => {
         let inds = utils.generate_n_basic_individuals(2)
         all.p_assign_fixed_size_population(inds, 2)
         all.p_migrate_island_fixed(inds, 1)
         assert.equal(inds[0].pop, 1)
         assert.equal(inds[1].pop, 0)
     })
+    it('fixed individuals - deme size 2', () => {
+        let inds = utils.generate_n_basic_individuals(4)
+        all.p_assign_fixed_size_population(inds, 2)
+        all.p_migrate_island_fixed(inds, 2)
+        assert.equal(inds[0].pop, 1)
+        assert.equal(inds[1].pop, 0)
+        assert.equal(inds[2].pop, 1)
+        assert.equal(inds[3].pop, 0)
+    })
+
 })
