@@ -122,7 +122,7 @@ describe('Complete Reproduction', () => {
         let rep = new all.ops_rep_NoGenomeStructuredSexualReproduction(
             utils.empty_species, 10, 2)
         assert.equal(rep.species, utils.empty_species)
-        assert.equal(rep.pop_size, 10)
+        assert.equal(rep.deme_size, 10)
         assert.equal(rep.num_pops, 2)
         let orig_size = 20
         let individuals = all.p_generate_n_inds(orig_size, () =>
