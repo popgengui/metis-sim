@@ -21,8 +21,9 @@ describe('Basic simulation', () => {
         let size = 10
         let rep_size = 20
         let individuals = utils.generate_n_basic_individuals(size)
-        let operators = [new all.ops_rep_NoGenomeSexualReproduction(
-            utils.empty_species, rep_size)]
+        let operators = [
+            all.ops_wrap(new all.ops_rep_NoGenomeSexualReproduction(
+                utils.empty_species, rep_size))]
         let state = {
             individuals, operators,
             cycle: 0,
