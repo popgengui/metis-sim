@@ -24,7 +24,7 @@ let two_SNP_species = new all.sp_Species('2 SNPs', two_SNP_genome)
 //Population support
 let generate_n_basic_individuals = (n, cycle=0) => {
     return all.p_generate_n_inds(n,
-        () => all.i_generate_basic_individual(empty_species, cycle))
+                                 () => all.i_assign_random_sex(all.i_generate_basic_individual(empty_species, cycle)))
 }
 
 module.exports.generate_n_basic_individuals = generate_n_basic_individuals
