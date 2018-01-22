@@ -3,7 +3,7 @@ const all = require('../../lib/metis-sim/all.js')
 //Markers
 let snp1 = new all.gn_SNP()
 let snp2 = new all.gn_SNP()
-let autosome_SNP = all.gn_Autosome(all.gn_SNP)
+let autosome_SNP = all.gn_AutosomeSNP
 
 //Genome metadata
 let metadata_genome_SNP = new Map()

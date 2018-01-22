@@ -20,7 +20,6 @@ gmale1.is_female = false
 let gfemale1 = all.integrated_generate_individual_with_genome(utils.two_SNP_species, 0, all.integrated_create_test_genome)
 gfemale1.is_female = true
 
-
 let wrapper = new all.ops_rep_WrapperChooser([male1, female1])
 
 
